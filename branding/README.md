@@ -52,6 +52,7 @@ PNG exports at 1024, 2400, 512, 128, and 64 pixels are beside the SVGs in
 | File | Use |
 | --- | --- |
 | [`commandment-demo.mp4`](../assets/demo/commandment-demo.mp4) | 64-second, 1080p demo |
+| [`commandment-demo.gif`](../assets/demo/commandment-demo.gif) | Full 64-second demo as a 1280 × 720, 10 fps GIF for inline README playback |
 | [`commandment-demo-720p.mp4`](../assets/demo/commandment-demo-720p.mp4) | Lighter web version |
 | [`commandment-demo-poster.jpg`](../assets/demo/commandment-demo-poster.jpg) | Video poster / README thumbnail |
 | [`commandment-demo-preview.gif`](../assets/demo/commandment-demo-preview.gif) | Silent looping terminal preview |
@@ -128,7 +129,8 @@ RENDER_VIDEO=1 ./branding/render-assets.sh
 
 The script uses `python3` (with `fonttools` and `uharfbuzz`), `rsvg-convert`,
 Chrome or Chromium, and `ffmpeg`. Set `CHROME=/path/to/chrome` if the binary is
-not `google-chrome-stable`.
+not `google-chrome-stable`. `gifsicle` is optional but recommended: it shrinks
+the full-length GIF substantially.
 
 To work on the video interactively:
 

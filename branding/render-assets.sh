@@ -87,13 +87,29 @@ if [[ "${RENDER_VIDEO:-0}" == "1" ]]; then
   ffmpeg -y -loglevel error -ss 45.3 -i assets/demo/commandment-demo.mp4 \
     -frames:v 1 -vf scale=1280:720 -q:v 2 assets/demo/commandment-demo-poster.jpg
 
-  palette_dir="$(mktemp -d "${TMPDIR:-/tmp}/commandment-gif.XXXXXX")"
-  trap 'rm -rf -- "$palette_dir"' EXIT
+  gif_dir="$(mktemp -d "${TMPDIR:-/tmp}/commandment-gif.XXXXXX")"
+  trap 'rm -rf -- "$gif_dir"' EXIT
+
+  echo "==> full-length HD GIF"
+  ffmpeg -y -loglevel error -i assets/demo/commandment-demo.mp4 \
+    -vf "fps=10,scale=1280:720:flags=lanczos,palettegen=max_colors=192:stats_mode=diff" \
+    "$gif_dir/full-palette.png"
+  ffmpeg -y -loglevel error -i assets/demo/commandment-demo.mp4 \
+    -i "$gif_dir/full-palette.png" \
+    -lavfi "fps=10,scale=1280:720:flags=lanczos[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" \
+    -loop 0 "$gif_dir/full.gif"
+  if command -v gifsicle >/dev/null 2>&1; then
+    gifsicle -O3 --lossy=40 "$gif_dir/full.gif" -o assets/demo/commandment-demo.gif
+  else
+    mv "$gif_dir/full.gif" assets/demo/commandment-demo.gif
+  fi
+
+  echo "==> short terminal GIF"
   ffmpeg -y -loglevel error -ss 38.8 -t 7.0 -i assets/demo/commandment-demo.mp4 \
     -vf "fps=12,scale=800:-1:flags=lanczos,palettegen=stats_mode=diff" \
-    "$palette_dir/palette.png"
+    "$gif_dir/palette.png"
   ffmpeg -y -loglevel error -ss 38.8 -t 7.0 -i assets/demo/commandment-demo.mp4 \
-    -i "$palette_dir/palette.png" \
+    -i "$gif_dir/palette.png" \
     -lavfi "fps=12,scale=800:-1:flags=lanczos[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=3" \
     -loop 0 assets/demo/commandment-demo-preview.gif
 fi

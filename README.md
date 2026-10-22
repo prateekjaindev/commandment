@@ -20,12 +20,12 @@ Commandment is in RC1 review before final v1.0.0. The review is happening agains
 
 <p align="center">
   <a href="assets/demo/commandment-demo.mp4">
-    <img src="assets/demo/commandment-demo-poster.jpg" alt="Commandment demo: one typed value resolved from default, environment, and flag in a real alienctl terminal" width="100%">
+    <img src="assets/demo/commandment-demo.gif" alt="Commandment demo: one typed value resolved from default, environment, and flag in a real alienctl terminal" width="100%">
   </a>
 </p>
 
 <p align="center">
-  <a href="assets/demo/commandment-demo.mp4"><b>Watch the 64-second demo</b></a>
+  64-second demo, shown as a 720p GIF. <a href="assets/demo/commandment-demo.mp4"><b>Open the MP4 for full quality</b></a>
   &nbsp;·&nbsp;
   <a href="branding/README.md">Brand guidelines</a>
 </p>
