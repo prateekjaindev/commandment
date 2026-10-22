@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:'Space Grotesk';src:url('../fonts/SpaceGrotesk.ttf');font-weight:300 700}
+@font-face{font-family:'JetBrains Mono';src:url('../fonts/JetBrainsMono.ttf');font-weight:100 800}
+:root{
+  --ink:#0A0C0B; --bone:#F2EFE6; --fog:#98A29A; --faint:#5D665F;
+  --lime:#C7F464; --line:rgba(242,239,230,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1280px;height:640px;background:var(--ink);overflow:hidden}
+body{font-family:'Space Grotesk';color:var(--bone)}
+.stage{position:relative;width:1280px;height:640px;overflow:hidden;
+  background:
+    radial-gradient(760px 470px at 76% 12%, rgba(199,244,100,.09), transparent 62%),
+    radial-gradient(660px 420px at 12% 92%, rgba(143,216,206,.035), transparent 62%),
+    var(--ink);
+}
+.dots{position:absolute;inset:0;
+  background-image:radial-gradient(rgba(242,239,230,.4) 1px, transparent 1px);
+  background-size:28px 28px;opacity:.1;
+  mask-image:radial-gradient(800px 520px at 50% 42%, #000, transparent 78%);
+}
+.topline{position:absolute;left:0;top:0;height:3px;width:180px;background:var(--lime)}
+.topline:after{content:"";position:absolute;right:-13px;top:0;width:8px;height:3px;background:var(--lime);opacity:.55}
+.lockup{position:absolute;left:0;right:0;top:74px;display:flex;justify-content:center}
+.lockup img{height:86px}
+.eyebrow{position:absolute;left:0;right:0;top:188px;text-align:center;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.2em;color:var(--lime)}
+h1{position:absolute;left:0;right:0;top:224px;text-align:center;
+  font-size:62px;line-height:1;letter-spacing:-2.2px;font-weight:700}
+h1 em{font-style:normal;color:var(--lime)}
+.sub{position:absolute;left:0;right:0;top:374px;text-align:center;font-size:19px;color:var(--fog);letter-spacing:-.1px}
+.rule{position:absolute;left:50%;top:428px;width:46px;height:2px;margin-left:-23px;background:var(--lime);opacity:.85}
+.url{position:absolute;left:0;right:0;top:462px;text-align:center;font-family:'JetBrains Mono';font-size:16px;color:var(--fog)}
+.url b{color:var(--bone);font-weight:500}
+.chips{position:absolute;left:0;right:0;top:518px;display:flex;justify-content:center;gap:9px}
+.chip{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.12em;color:var(--fog);
+  border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:rgba(242,239,230,.025)}
+.chip.hot{color:var(--ink);background:var(--lime);border-color:var(--lime);font-weight:600}
+.foot{position:absolute;left:0;right:0;bottom:42px;text-align:center;font-family:'JetBrains Mono';font-size:9px;letter-spacing:.18em;color:#47524A}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="dots"></div>
+  <div class="topline"></div>
+  <div class="lockup"><img src="../../assets/brand/commandment-lockup-dark.svg" alt="Commandment"></div>
+  <div class="eyebrow">DECLARATIVE CLI FRAMEWORK FOR GO</div>
+  <h1>One definition.<br><em>Every surface.</em></h1>
+  <p class="sub">Typed values, policy, grammar, completion, schema, and tests — one compiled semantic model.</p>
+  <div class="rule"></div>
+  <div class="url">github.com/<b>abstractionsinc</b>/commandment</div>
+  <div class="chips">
+    <span class="chip hot">RC1</span>
+    <span class="chip">Go 1.27</span>
+    <span class="chip">Apache-2.0</span>
+    <span class="chip">Open source</span>
+  </div>
+  <div class="foot">ONE SEMANTIC AUTHORITY · EVERY SURFACE</div>
+</div>
+</body>
+</html>

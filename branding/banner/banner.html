@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:'Space Grotesk';src:url('../fonts/SpaceGrotesk.ttf');font-weight:300 700}
+@font-face{font-family:'JetBrains Mono';src:url('../fonts/JetBrainsMono.ttf');font-weight:100 800}
+:root{
+  --ink:#0A0C0B; --ink2:#0E1211; --panel:#101513;
+  --bone:#F2EFE6; --fog:#98A29A; --faint:#5D665F;
+  --lime:#C7F464; --lime-dim:#8FAE55;
+  --line:rgba(242,239,230,.11);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:640px;background:var(--ink);overflow:hidden}
+body{font-family:'Space Grotesk';color:var(--bone)}
+.stage{position:relative;width:1600px;height:640px;overflow:hidden;
+  background:
+    radial-gradient(900px 500px at 88% 34%, rgba(199,244,100,.085), transparent 62%),
+    radial-gradient(700px 460px at 6% 0%, rgba(199,244,100,.035), transparent 60%),
+    var(--ink);
+}
+.dots{position:absolute;inset:0;
+  background-image:radial-gradient(rgba(242,239,230,.16) 1px, transparent 1px);
+  background-size:30px 30px;opacity:.16;
+  mask-image:linear-gradient(115deg, rgba(0,0,0,.75), transparent 62%);
+}
+.watermark{position:absolute;right:-120px;bottom:-220px;width:720px;height:720px;opacity:.045;transform:rotate(-8deg)}
+.topline{position:absolute;left:80px;top:0;height:3px;width:210px;background:var(--lime)}
+.topline:after{content:"";position:absolute;right:-14px;top:0;width:9px;height:3px;background:var(--lime);opacity:.55}
+
+.left{position:absolute;left:80px;top:72px;width:690px}
+.lockup{height:104px;margin-bottom:34px}
+.lockup img{height:104px;display:block}
+
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.18em;color:var(--lime);margin-bottom:18px}
+.eyebrow .bar{width:26px;height:1px;background:var(--lime);opacity:.7}
+
+h1{font-size:70px;line-height:.98;letter-spacing:-2.6px;font-weight:700;color:var(--bone)}
+h1 em{font-style:normal;color:var(--lime)}
+.sub{margin-top:24px;font-size:18.5px;line-height:1.55;letter-spacing:-.1px;color:var(--fog);max-width:620px;text-wrap:balance}
+.sub b{color:var(--bone);font-weight:500}
+.meta{position:absolute;left:80px;bottom:64px;display:flex;align-items:center;gap:10px}
+.chip{font-family:'JetBrains Mono';font-size:11.5px;letter-spacing:.02em;color:var(--fog);
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:rgba(242,239,230,.025)}
+.chip.hot{color:var(--ink);background:var(--lime);border-color:var(--lime);font-weight:600}
+.url{margin-left:12px;font-family:'JetBrains Mono';font-size:11.5px;color:var(--fog)}
+
+.right{position:absolute;right:80px;top:76px;width:700px}
+.pipe{display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.13em;color:var(--faint);margin-bottom:14px;padding-left:4px}
+.pipe b{color:var(--bone);font-weight:500}
+.pipe .arrow{color:var(--lime);font-size:13px}
+.pipe .surfaces{margin-left:auto;letter-spacing:.04em;color:var(--fog)}
+
+.term{position:relative;background:linear-gradient(180deg, #121715 0%, #0C100E 100%);
+  border:1px solid var(--line);border-radius:15px;overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.55), inset 0 1px 0 rgba(242,239,230,.05)}
+.term:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--lime),transparent 55%);opacity:.65}
+.tbar{display:flex;align-items:center;height:44px;padding:0 16px;border-bottom:1px solid var(--line);gap:7px;background:rgba(242,239,230,.018)}
+.dot{width:9px;height:9px;border-radius:50%;background:#2B322D;border:1px solid rgba(242,239,230,.08)}
+.term-title{margin-left:10px;font-family:'JetBrains Mono';font-size:11.5px;color:var(--faint);letter-spacing:.02em}
+.term-title b{color:var(--fog);font-weight:500}
+.live{margin-left:auto;display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono';font-size:10.5px;color:var(--lime);letter-spacing:.12em}
+.live:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px rgba(199,244,100,.75)}
+
+.tbody{padding:22px 24px 24px;font-family:'JetBrains Mono';font-size:14.2px;line-height:1.72;letter-spacing:-.15px}
+.line{white-space:pre;display:flex;gap:10px}
+.prompt{color:var(--lime);user-select:none}
+.cmd{color:var(--bone)}
+.dim{color:#768279}
+.out{color:#AEB8B0}
+.err{color:#F2A65A}
+.hi{color:var(--lime)}
+.flag{color:#C9B8FF}
+.env{color:#8FD8CE}
+.cursor{display:inline-block;width:8px;height:16px;background:var(--lime);vertical-align:-3px;margin-left:2px;animation:none}
+.comment{color:#59625B}
+
+.foot{position:absolute;right:80px;bottom:66px;display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono';font-size:11.5px;letter-spacing:.02em;color:var(--fog)}
+.repo-dot{width:7px;height:7px;background:var(--lime);opacity:.8}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="dots"></div>
+    <div class="topline"></div>
+
+  <div class="left">
+    <div class="lockup"><img src="../../assets/brand/commandment-lockup-dark.svg" alt="Commandment"></div>
+    <div class="eyebrow"><span class="bar"></span>OPEN SOURCE · RC1 · GO 1.27</div>
+    <h1>One definition.<br><em>Every surface.</em></h1>
+    <p class="sub">A declarative CLI framework for Go. Typed values, policy, grammar, completion, schema, and tests share <b>one compiled semantic model</b>.</p>
+  </div>
+
+  <div class="right">
+    <div class="pipe">
+      <span>DEFINITION</span><span class="arrow">→</span><span>COMPILE</span><span class="arrow">→</span><b>APPLICATION</b>
+      <span class="surfaces">run · help · completion · schema</span>
+    </div>
+    <div class="term">
+      <div class="tbar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="term-title"><b>alienctl</b> — zsh</span>
+        <span class="live">COMPILED</span>
+      </div>
+      <div class="tbody">
+        <div class="line"><span class="prompt">></span><span class="cmd">./alienctl <span class="flag">--profile</span> survey scan <span class="hi">mars</span></span></div>
+        <div class="line"><span class="prompt"></span><span class="out">scanning mars with profile survey</span></div>
+        <div class="line"><span class="prompt"></span><span class="out"> </span></div>
+        <div class="line"><span class="prompt">></span><span class="cmd"><span class="env">ALIEN_BEAM_STRENGTH</span>=2 ./alienctl \</span></div>
+        <div class="line"><span class="prompt"></span><span class="cmd">    <span class="flag">--profile</span> field abduct \</span></div>
+        <div class="line"><span class="prompt"></span><span class="cmd">    <span class="flag">--beam-strength</span> 4 <span class="hi">cow</span></span></div>
+        <div class="line"><span class="prompt"></span><span class="out">abducting cow with beam strength <span class="hi">4</span> using profile field</span></div>
+        <div class="line"><span class="prompt"></span><span class="out"> </span></div>
+        <div class="line"><span class="prompt">></span><span class="cmd">./alienctl abduct <span class="flag">--beam-strength</span> 99 cow</span></div>
+        <div class="line"><span class="prompt"></span><span class="err">commandment: rule-violation</span></div>
+        <div class="line"><span class="prompt">></span><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="meta">
+    <span class="chip hot">RC1</span>
+    <span class="chip">Go 1.27</span>
+    <span class="chip">Apache-2.0</span>
+    <span class="chip">Immutable Application</span>
+  </div>
+
+  <div class="foot"><span class="repo-dot"></span>github.com/abstractionsinc/commandment</div>
+</div>
+</body>
+</html>

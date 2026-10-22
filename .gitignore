@@ -4,3 +4,8 @@
 /examples/*/*/alienctl.exe
 /examples/*/*/alienctl-*
 /examples/*/*/alienctl-*.exe
+
+# Branding build artifacts
+/branding/video/node_modules/
+/branding/video/out/
+/branding/video/.remotion/

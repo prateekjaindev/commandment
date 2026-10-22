@@ -1,0 +1,19 @@
+{
+  "name": "commandment-demo-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Remotion source for the Commandment demo video",
+  "license": "Apache-2.0",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts CommandmentDemo out/commandment-demo.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p",
+    "render:local": "remotion render src/index.ts CommandmentDemo out/commandment-demo.mp4 --browser-executable=/usr/bin/google-chrome-stable --codec=h264 --crf=18 --pixel-format=yuv420p",
+    "still": "remotion still src/index.ts CommandmentDemo out/still.png"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.538",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.538"
+  }
+}

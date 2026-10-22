@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/brand/commandment-banner.png" alt="Commandment — One definition. Every surface." width="100%">
+</p>
+
 # Commandment
 
 Commandment is a declarative CLI framework for Go. Application code declares commands, typed values, input sources, policy, and selected runtime behavior in ordinary Go. `Compile` validates that declaration and returns an immutable `Application` that execution, help, completion, structured tooling, and semantic tests can all use.
@@ -11,6 +15,20 @@ Definition -> Compile -> immutable Application
 **RC1 community review** · **Go 1.27.1** · **module `github.com/abstractionsinc/commandment`**
 
 Commandment is in RC1 review before final v1.0.0. The review is happening against the current [public source on GitHub](https://github.com/abstractionsinc/commandment). [Getting Started](docs/01-getting-started.md) shows how to build against that checkout.
+
+## See it in action
+
+<p align="center">
+  <a href="assets/demo/commandment-demo.mp4">
+    <img src="assets/demo/commandment-demo-poster.jpg" alt="Commandment demo: one typed value resolved from default, environment, and flag in a real alienctl terminal" width="100%">
+  </a>
+</p>
+
+<p align="center">
+  <a href="assets/demo/commandment-demo.mp4"><b>Watch the 64-second demo</b></a>
+  &nbsp;·&nbsp;
+  <a href="branding/README.md">Brand guidelines</a>
+</p>
 
 ## Meet `alienctl`
 
